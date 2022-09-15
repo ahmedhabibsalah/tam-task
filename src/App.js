@@ -1,21 +1,22 @@
 import SignIn from "./components/SignIn";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import useToken from "./hooks/useToken";
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Layout from "./components/Layout";
 
 function App() {
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
 
-  if (!token) {
-    return <SignIn setToken={setToken} />;
-  }
+  // if (!token) {
+  //   return <SignIn setToken={setToken} />;
+  // }
 
   return (
     <>
-      <h1>Hello</h1>
       <BrowserRouter>
+        <Layout />
         <Routes>
-          <Route element={<Home />} path="/" exact />
+          <Route element={<Dashboard />} path="/dashboard" exact />
         </Routes>
       </BrowserRouter>
     </>
