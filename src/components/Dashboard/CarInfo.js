@@ -8,7 +8,7 @@ import {
   RangeChart,
   Tire,
   TireChart,
-} from "./Icons/Icons";
+} from "../Icons/Icons";
 
 const data = [
   { id: 1, icon: <Energy />, title: "Energy", chart: <EnergyChart /> },

@@ -1,7 +1,7 @@
 import React from "react";
-import CarInfo from "../components/CarInfo";
-import DashboardCars from "../components/DashboardCars";
-import Features from "../components/Features";
+import CarInfo from "./CarInfo";
+import DashboardCars from "./DashboardCars";
+import Features from "./Features";
 
 function Dashboard() {
   return (

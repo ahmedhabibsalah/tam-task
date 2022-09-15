@@ -1,15 +1,31 @@
 import React from "react";
 
-function SearchBar() {
+function SearchBar({ posts, setSearchResults }) {
+  const handleSubmit = (e) => e.preventDefault();
+
+  const handleSearchChange = (e) => {
+    if (!e.target.value) return setSearchResults(posts);
+
+    const resultsArray = posts.filter(
+      (post) =>
+        post.type.includes(e.target.value) || post.date.includes(e.target.value)
+    );
+
+    setSearchResults(resultsArray);
+  };
+
   return (
-    <form className="relative max-w-[200px] sm:max-w-[360px] w-full">
+    <form
+      className="relative max-w-[200px] sm:max-w-[360px] w-full"
+      onSubmit={handleSubmit}
+    >
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
       >
         Search
       </label>
-      <div className="relative max-w-[360px] w-full">
+      <div className="relative max-w-[360px] w-full ">
         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none ">
           <svg
             aria-hidden="true"
@@ -30,9 +46,10 @@ function SearchBar() {
         <input
           type="search"
           id="default-search"
-          className={`block p-4 pl-10 text-sm text-gray-900 bg-[#F5F4F6] rounded-lg w-full`}
+          className={`block p-4 pl-10 text-sm text-gray-900 bg-[#ffffff] rounded-lg w-full`}
           placeholder="Search Or Type"
           required
+          onChange={handleSearchChange}
         />
       </div>
     </form>

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 import { Cars, DashboardIcn, LogOut, Settings } from "./Icons/Icons";
-import SearchBar from "./shared/SearchBar";
 import Account from "./shared/Account";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
+import Booking from "./Booking/Booking";
+import useToken from "../hooks/useToken";
 
 const SidebarData = [
   {
@@ -19,29 +19,35 @@ const SidebarData = [
     icon: <Cars />,
   },
 ];
+const pageData = [
+  { id: 1, page: <Dashboard /> },
+  { id: 2, page: <Booking /> },
+];
 function Layout() {
   const [isActive, setIsActive] = useState(1);
-
+  const filtered = pageData.filter((obj) => {
+    return obj.id === isActive;
+  });
+  const { setToken } = useToken();
+  const handleLogOut = () => {
+    setToken(null);
+  };
   return (
     <>
       <IconContext.Provider value={{ color: "#5F6165" }}>
         {/* All the icons now are white */}
         <div className="bg-[#ffffff] h-0 sm:h-[78px] flex justify-start items-center">
-          <div className="hidden sm:flex justify-between items-center w-full ml-[300px]">
-            <SearchBar />
-            <div className="hidden sm:flex mr-6">
+          <div className="hidden sm:flex justify-between items-center w-full ml-[300px] xlg:ml-[350px] relative">
+            <div className="hidden sm:flex mr-6 absolute right-0">
               <Account />
             </div>
           </div>
         </div>
         <div className="flex ">
-          <nav className=" bg-[#ffffff] w-full sm:w-[250px] flex-[0.2] sticky">
+          <nav className=" bg-[#ffffff] w-full sm:w-[250px] flex-[0.2] sticky mt-[-78px]">
             <ul className="w-full p-0">
-              <li className="flex justify-start items-center py-2 ml-4  mr-1 h-[60px] list-none">
+              <li className="flex justify-start items-center py-2 ml-4 pl-[16px]  mr-1 h-[60px] list-none">
                 <img src="./logo.svg" alt="logo" />
-              </li>
-              <li className="flex sm:hidden justify-center items-center py-2 ml-4 mr-1 h-[60px] list-none">
-                <SearchBar />
               </li>
               <li className="flex sm:hidden justify-center items-center py-2 ml-4  mr-1 h-[60px] list-none">
                 <Account />
@@ -82,6 +88,7 @@ function Layout() {
               <li className="flex justify-start items-center py-2 ml-4  mr-1 h-[60px] list-none	">
                 <Link
                   to="/"
+                  onClick={handleLogOut}
                   className="no-underline	text-[#5F6165] text-sm font-medium flex items-center py-0 px-4 h-[100px] rounded-[4px]"
                 >
                   <LogOut />
@@ -90,9 +97,13 @@ function Layout() {
               </li>
             </ul>
           </nav>
-          <div className="flex-[0.8]">
-            <Dashboard />
-          </div>
+          {filtered.map((obj) => {
+            return (
+              <div className="flex-[0.8]" key={obj.id}>
+                {obj.page}
+              </div>
+            );
+          })}
         </div>
       </IconContext.Provider>
     </>

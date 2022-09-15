@@ -1,38 +1,20 @@
-import React from "react";
-import DashboardCarCards from "./shared/DashboardCarCards";
-
-const data = [
-  {
-    id: 1,
-    prcentage: "64% Recommend",
-    pic: "./s-car.png",
-    name: "Mini Cooper",
-    retweets: "132K",
-    price: "$28/h",
-  },
-  {
-    id: 2,
-    prcentage: "74% Recommend",
-    pic: "./w-car.png",
-    name: "Porsche 911 Carrera",
-    retweets: "130K",
-    price: "$28/h",
-  },
-
-  {
-    id: 3,
-    prcentage: "74% Recommend",
-    pic: "./r-car.png",
-    name: "Porsche 911 Carrera",
-    retweets: "130K",
-    price: "$28/h",
-  },
-];
+import React, { useEffect, useState } from "react";
+import DashboardCarCards from "../shared/DashboardCarCards";
 
 function DashboardCars() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/dashboard")
+      .then((res) => res.json())
+      .then((result) => {
+        setPosts(result);
+        // console.log(result);
+      });
+  }, []);
   return (
     <div className="flex items-center justify-between flex-wrap w-full">
-      {data.map((item, index) => (
+      {posts.map((item, index) => (
         <DashboardCarCards
           key={item.id}
           prcent={item.prcentage}

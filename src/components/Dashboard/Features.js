@@ -1,6 +1,6 @@
 import React from "react";
-import LoanCard from "./shared/LoanCard";
-import Rewards from "./shared/Rewards";
+import LoanCard from "../shared/LoanCard";
+import Rewards from "../shared/Rewards";
 
 export default function Features() {
   return (

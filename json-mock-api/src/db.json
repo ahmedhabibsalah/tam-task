@@ -1,0 +1,67 @@
+{
+  "booking": [
+    {
+      "id": 1,
+      "date": "New",
+      "type": "dark",
+      "src": "./dark-1.png"
+    },
+    {
+      "id": 2,
+      "date": "New",
+      "type": "dark",
+      "src": "./dark-2.png"
+    },
+    {
+      "id": 3,
+      "date": "New",
+      "type": "dark",
+      "src": "./dark-3.png"
+    },
+    {
+      "id": 4,
+      "date": "Old",
+      "type": "dark",
+      "src": "./dark-4.png"
+    },
+    {
+      "id": 5,
+      "date": "Old",
+      "type": "light",
+      "src": "./light-1.png"
+    },
+    {
+      "id": 6,
+      "date": "Old",
+      "type": "light",
+      "src": "./light-2.png"
+    }
+  ],
+  "dashboard": [
+    {
+      "id": 1,
+      "prcentage": "64% Recommend",
+      "pic": "./s-car.png",
+      "name": "Mini Cooper",
+      "retweets": "132K",
+      "price": "$28/h"
+    },
+    {
+      "id": 2,
+      "prcentage": "74% Recommend",
+      "pic": "./w-car.png",
+      "name": "Porsche 911 Carrera",
+      "retweets": "130K",
+      "price": "$28/h"
+    },
+
+    {
+      "id": 3,
+      "prcentage": "74% Recommend",
+      "pic": "./r-car.png",
+      "name": "Porsche 911 Carrera",
+      "retweets": "130K",
+      "price": "$28/h"
+    }
+  ]
+}
