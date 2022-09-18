@@ -9,3 +9,5 @@ In the project directory, you need to run the following commands:
 ### `npm start` To Launch the App
 
 ### Removed The Search Bar From The Header And Added It To The Booking Page So The Search Function Access The Targeted Data and Not The Whole Application
+
+### The Search-bar Function Search for The Keys' Type(light-dark), date(new-old)
